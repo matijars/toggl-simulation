@@ -183,8 +183,8 @@
   width: 120px;
 }
 
-/* Content */
-.content-wrapper {
+/* Time bar */
+.time-bar-wrapper {
   position: fixed;
   margin-left: 180px;
   transition: 0.2s ease;
@@ -193,15 +193,22 @@
   width: 100vw;
 }
 
-.your-work {
+.time-bar-input {
   border: none;
   width: 100%;
   height: 66px;
   box-shadow: rgba(0, 0, 0, 0.13) 0px 2px 6px 0px;
   padding: 0px 20px;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
 }
 
-.your-work::placeholder {
+.time-bar-input:focus::placeholder {
+  color: transparent;
+}
+
+.time-bar-input::placeholder {
   color: rgb(149, 137, 155);
   font-size: 18px;
   font-weight: 500;
