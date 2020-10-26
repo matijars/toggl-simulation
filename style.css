@@ -14,6 +14,15 @@
   --menu-section-clr: rgb(130, 113, 136);
 
   --menu-bg-clr: rgb(44, 19, 56);
+
+  --time-bar-clr: rgb(149, 137, 155);
+
+  --light-pink: #fbe5f7;
+
+  --play-btn: #dd6fd1;
+  --play-btn-hover: #d346c4;
+
+  --timer-mode-active: #422a4c;
 }
 
 /* Menu */
@@ -183,21 +192,46 @@
   width: 120px;
 }
 
-/* Time bar */
-.time-bar-wrapper {
-  position: fixed;
+/* Main content */
+.main-content {
   margin-left: 180px;
   transition: 0.2s ease;
   background-color: #fef9f8;
   height: 100vh;
-  width: 100vw;
+}
+
+/* Time bar */
+.time-bar-wrapper {
+  position: fixed;
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 2px 6px 0px;
+  width: 100%;
+  padding-right: 200px;
+  background-color: #fff;
+  transition: 0.2s ease;
+}
+
+.time-bar-wrapper i {
+  color: var(--time-bar-clr);
+  cursor: pointer;
+  margin-left: 3px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.time-bar-wrapper i:hover {
+  color: rgb(111, 98, 117);
+}
+
+.time-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .time-bar-input {
   border: none;
   width: 100%;
   height: 66px;
-  box-shadow: rgba(0, 0, 0, 0.13) 0px 2px 6px 0px;
   padding: 0px 20px;
   outline: none;
   font-weight: 400;
@@ -209,9 +243,49 @@
 }
 
 .time-bar-input::placeholder {
-  color: rgb(149, 137, 155);
+  color: var(--time-bar-clr);
   font-size: 18px;
   font-weight: 500;
+}
+
+.time-bar-actions {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+.time-bar-time {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 15px;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+.time-bar-time:hover {
+  background-color: var(--light-pink);
+}
+
+.main-content .play-btn {
+  color: var(--play-btn);
+  font-size: 38px;
+}
+
+.main-content .play-btn:hover {
+  color: var(--play-btn-hover);
+}
+
+.timer-bar-mode {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70%;
+}
+
+.timer-bar-mode i {
+  padding: 0px;
 }
 
 /* Utilities */
@@ -234,6 +308,10 @@
 
 .divider {
   display: none;
+}
+
+#timer-mode-active {
+  color: var(--timer-mode-active);
 }
 
 /* Buttons */
@@ -324,7 +402,11 @@
     color: var(--menu-link-hover-clr);
   }
 
-  .content-wrapper {
+  .main-content {
     margin-left: 52px;
+  }
+
+  .time-bar-wrapper {
+    padding-right: 70px;
   }
 }
