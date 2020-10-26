@@ -132,8 +132,23 @@
       </div>
     </div>
 
-    <div class="time-bar-wrapper">
-      <input type="text" class="time-bar-input" placeholder="What are you working on?" />
+    <div class="main-content">
+      <div class="time-bar-wrapper">
+        <div class="time-bar-inner">
+          <input type="text" class="time-bar-input" placeholder="What are you working on?" />
+          <div class="time-bar-actions">
+            <i class="fas fa-folder"></i>
+            <i class="fas fa-tag"></i>
+            <i class="fas fa-dollar-sign"></i>
+            <span class="time-bar-time">0:00:00</span>
+            <i class="fas fa-play-circle play-btn"></i>
+            <div class="timer-bar-mode">
+              <i class="fas fa-clock" id="timer-mode-active"></i>
+              <i class="fas fa-bars"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="main.js"></script>
