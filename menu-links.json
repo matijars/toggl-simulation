@@ -1,0 +1,79 @@
+[ 
+  {
+    "Analize": [
+      {
+      "span": "Reports",
+      "icon": "<i class='fas fa-file-alt'></i>"
+    },
+    {
+      "span": "Insights",
+      "icon": "<i class='fas fa-chart-line'></i>"
+    },
+    {
+      "span": "Saved Reports",
+      "icon": "<i class='fas fa-star'></i>"
+    }]
+
+  },
+
+  {
+    "Manage": [
+      {
+      "span": "Projects",
+      "icon": "<i class='fas fa-folder'></i>"
+    },
+    {
+      "span": "Clients",
+      "icon": "<i class='fas fa-portrait'></i>"
+    },
+    {
+      "span": "Team",
+      "icon": "<i class='fas fa-user-friends'></i>"
+    },
+    {
+      "span": "Tags",
+      "icon": "<i class='fas fa-tag'></i>"
+    },
+    {
+      "span": "Settings",
+      "icon": "<i class='fas fa-cog'></i>"
+    },
+    {
+      "span": "Help",
+      "icon": "<i class='fas fa-question-circle'></i>"
+    }]
+
+  },
+
+  {
+    "ShowMore": [
+      {
+      "span": "Import/Export",
+      "icon": "<i class='fas fa-cloud-download-alt'></i>"
+    },
+    {
+      "span": "Subscription",
+      "icon": "<i class='fas fa-credit-card'></i>"
+    },
+    {
+      "span": "Mobile App",
+      "icon": "<i class='fas fa-mobile-alt'></i>"
+    },
+    {
+      "span": "Desktop App",
+      "icon": "<i class='fas fa-desktop'></i>"
+    },
+    {
+      "span": "Blog",
+      "icon": "<i class='fas fa-arrow-right'></i>"
+    },
+    {
+      "span": "Jobs",
+      "icon": "<i class='fas fa-arrow-right'></i>"
+    }]
+
+  }
+  
+]
+
+

@@ -100,7 +100,7 @@
 }
 
 /* More Links */
-.show-more {
+.show-more-section {
   display: flex;
   flex-direction: column;
   max-height: 0;
@@ -108,11 +108,11 @@
   transition: 0.2s ease-in-out;
 }
 
-.show-more .side-menu-item {
+.show-more-section .side-menu-item {
   opacity: 0.5;
 }
 
-.show-more .side-menu-item:hover {
+.show-more-section .side-menu-item:hover {
   opacity: 1;
 }
 
@@ -347,8 +347,8 @@
 
   .divider {
     display: block;
-    width: 500px;
-    transform: translate3d(-100px, 20px, 0px);
+    width: 52px;
+    transform: translate3d(-10px, 20px, 0px);
     height: 1px;
     background-color: var(--menu-section-clr);
     opacity: 0.5;
