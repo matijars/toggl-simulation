@@ -1,4 +1,6 @@
-let showMoreSection = document.querySelector(".show-more");
+let sideMenu = document.querySelector(".side-menu");
+
+let showMoreSection = document.querySelector(".show-more-section");
 let showMoreBtn = document.querySelector("#show-more-btn");
 let showMoreBtnArrow = document.querySelector(".fa-chevron-down");
 
@@ -9,6 +11,56 @@ let menuItems = document.querySelectorAll(".side-menu-item");
 let workspace = document.querySelector(".workspace");
 let workspaceArrow = document.querySelector(".workspace .fa-chevron-down");
 
+const menuLinks = "./menu-links.json";
+
+// Load menu items from json
+fetch(menuLinks)
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data[0].Analize);
+    const Analize = data[0].Analize.map((item) => {
+      return `<div class="side-menu-item">
+        <div class="icon">${item.icon}</div>
+        <span>${item.span}</span>
+      </div>`;
+    }).join("");
+
+    const Manage = data[1].Manage.map((item) => {
+      return `<div class="side-menu-item">
+      <div class="icon">${item.icon}</div>
+      <span>${item.span}</span>
+       </div>`;
+    }).join("");
+
+    const ShowMore = data[2].ShowMore.map((item) => {
+      return `<div class="side-menu-item">
+      <div class="icon">${item.icon}</div>
+      <span>${item.span}</span>
+       </div>`;
+    }).join("");
+
+    document.querySelector(".analize-section").insertAdjacentHTML("afterbegin", Analize);
+    document.querySelector(".manage-section").insertAdjacentHTML("afterbegin", Manage);
+    document.querySelector(".show-more-section").insertAdjacentHTML("afterbegin", ShowMore);
+  });
+
+// Menu active class
+sideMenu.addEventListener(
+  "click",
+  function (e) {
+    if (e.target.classList.contains("side-menu-item")) {
+      sideMenu.querySelectorAll(".side-menu-item").forEach((item) => {
+        item.classList.remove("active");
+      });
+      e.target.classList.add("active");
+    }
+  },
+  true
+);
+
+// Manage menu section (Show more)
 showMoreBtn.addEventListener("click", () => {
   showMoreSection.classList.toggle("active-section");
 
@@ -21,15 +73,7 @@ showMoreBtn.addEventListener("click", () => {
   }
 });
 
-menuItems.forEach((item) => {
-  item.addEventListener("click", (item) => {
-    item.target.parentElement.parentElement
-      .querySelectorAll(".active")
-      .forEach((e) => e.classList.remove("active"));
-    item.target.classList.add("active");
-  });
-});
-
+// Workspace menu section
 workspace.addEventListener("click", () => {
   workspace.classList.toggle("workspace-active");
 
@@ -42,6 +86,7 @@ workspace.addEventListener("click", () => {
   }
 });
 
+// Responsive on window resise
 window.onresize = function () {
   toggle();
 };
