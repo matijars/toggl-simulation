@@ -11,6 +11,10 @@ let menuItems = document.querySelectorAll(".side-menu-item");
 let workspace = document.querySelector(".workspace");
 let workspaceArrow = document.querySelector(".workspace .fa-chevron-down");
 
+let playBtn = document.querySelector(".play-btn");
+let playBtnClr = "#dd6fd1";
+let playBtnPauseClr = "#FF897A";
+
 const menuLinks = "./menu-links.json";
 
 // Load menu items from json
@@ -19,26 +23,25 @@ fetch(menuLinks)
     return res.json();
   })
   .then((data) => {
-    console.log(data[0].Analize);
     const Analize = data[0].Analize.map((item) => {
       return `<div class="side-menu-item">
-        <div class="icon">${item.icon}</div>
-        <span>${item.span}</span>
-      </div>`;
+                <div class="icon">${item.icon}</div>
+                <span>${item.span}</span>
+              </div>`;
     }).join("");
 
     const Manage = data[1].Manage.map((item) => {
       return `<div class="side-menu-item">
-      <div class="icon">${item.icon}</div>
-      <span>${item.span}</span>
-       </div>`;
+                <div class="icon">${item.icon}</div>
+                <span>${item.span}</span>
+              </div>`;
     }).join("");
 
     const ShowMore = data[2].ShowMore.map((item) => {
       return `<div class="side-menu-item">
-      <div class="icon">${item.icon}</div>
-      <span>${item.span}</span>
-       </div>`;
+                <div class="icon">${item.icon}</div>
+                <span>${item.span}</span>
+              </div>`;
     }).join("");
 
     document.querySelector(".analize-section").insertAdjacentHTML("afterbegin", Analize);
@@ -98,3 +101,18 @@ function toggle() {
     brand.src = "./img/toggl.png";
   }
 }
+
+// Play button
+playBtn.addEventListener("click", (e) => {
+  let btn = e.target;
+
+  btn.toggleAttribute("active");
+
+  if (btn.hasAttribute("active")) {
+    btn.style.color = playBtnPauseClr;
+    btn.className = "fas fa-stop-circle play-btn";
+  } else {
+    btn.className = "fas fa-play-circle play-btn";
+    btn.style.color = "";
+  }
+});
