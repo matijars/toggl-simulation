@@ -30,7 +30,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  padding: 15px 10px;
+  padding: 15px 0px;
   height: 100vh;
   width: 180px;
   background-color: var(--menu-bg-clr);
@@ -38,11 +38,34 @@
   transition: width 0.2s ease;
 }
 
+.side-menu-scroll {
+  overflow-y: scroll;
+  overflow-y: overlay;
+  padding-left: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--menu-bg-clr);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--play-btn);
+}
+
+.side-menu-scroll:hover::-webkit-scrollbar {
+  width: 3px;
+}
+
 .side-menu .brand {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding: 0px 8px;
   cursor: pointer;
 }
@@ -71,8 +94,8 @@
   align-items: center;
   color: var(--menu-link-clr);
   border-radius: 8px;
-  padding: 6px 8px;
-  margin-bottom: 3px;
+  padding: 8px 8px;
+  margin: 0px 10px 0px 0px;
   cursor: pointer;
   white-space: nowrap;
 }
@@ -330,7 +353,7 @@
   .side-menu .brand {
     justify-content: center;
     margin-top: 7px;
-    margin-bottom: 26px;
+    margin-bottom: 20px;
   }
 
   .side-menu .brand-bell {
@@ -352,7 +375,7 @@
     height: 1px;
     background-color: var(--menu-section-clr);
     opacity: 0.5;
-    margin-bottom: 14px;
+    margin-bottom: 40px;
   }
 
   .side-menu-profile .side-menu-section {
@@ -366,7 +389,7 @@
   .workspace {
     flex-direction: column;
     border: none;
-    margin-bottom: 0px;
+    margin: 0px;
   }
 
   .workspace:hover {
@@ -395,6 +418,7 @@
     color: var(--menu-link-clr);
     font-size: 16px;
     margin-bottom: 10px;
+    padding-left: 10px;
     cursor: pointer;
   }
 
