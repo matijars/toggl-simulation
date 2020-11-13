@@ -11,10 +11,6 @@ let menuItems = document.querySelectorAll(".side-menu-item");
 let workspace = document.querySelector(".workspace");
 let workspaceArrow = document.querySelector(".workspace .fa-chevron-down");
 
-let playBtn = document.querySelector(".play-btn");
-let playBtnClr = "#dd6fd1";
-let playBtnPauseClr = "#FF897A";
-
 const menuLinks = "./menu-links.json";
 
 // Load menu items from json
@@ -101,18 +97,3 @@ function toggle() {
     brand.src = "./img/toggl.png";
   }
 }
-
-// Play button
-playBtn.addEventListener("click", (e) => {
-  let btn = e.target;
-
-  btn.toggleAttribute("active");
-
-  if (btn.hasAttribute("active")) {
-    btn.style.color = playBtnPauseClr;
-    btn.className = "fas fa-stop-circle play-btn";
-  } else {
-    btn.className = "fas fa-play-circle play-btn";
-    btn.style.color = "";
-  }
-});
