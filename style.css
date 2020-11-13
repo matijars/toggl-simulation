@@ -66,7 +66,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
-  padding: 0px 8px;
+  padding: 0px 15px;
   cursor: pointer;
 }
 
@@ -108,7 +108,7 @@
 #show-more-btn span,
 .workspace span {
   font-size: 14px;
-  margin-left: 15px;
+  margin-left: 14px;
   pointer-events: none;
 }
 
@@ -143,6 +143,11 @@
 
 .workspace-section {
   margin-top: auto;
+  padding-left: 10px;
+}
+
+.workspace-section .side-menu-section {
+  margin-bottom: 10px;
 }
 
 .workspace {
@@ -184,6 +189,7 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  padding: 0px 15px;
 }
 
 .side-menu-profile span {
@@ -293,7 +299,7 @@
 
 .main-content .play-btn {
   color: var(--play-btn);
-  font-size: 38px;
+  font-size: 37px;
 }
 
 .main-content .play-btn:hover {
@@ -392,6 +398,10 @@
     margin: 0px;
   }
 
+  .workspace-section {
+    padding: 0px;
+  }
+
   .workspace:hover {
     border: none;
   }
@@ -424,6 +434,10 @@
 
   .side-menu-section .profile-section-bell:hover {
     color: var(--menu-link-hover-clr);
+  }
+
+  .side-menu-profile .icon {
+    padding: 0px;
   }
 
   .main-content {
