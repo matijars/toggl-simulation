@@ -53,11 +53,20 @@ function start() {
 
 function reset() {
   clearInterval(timerInterval);
-  print("0:00:00");
   elapsedTime = 0;
-}
+  log();
 
+  print("0:00:00");
+  document.querySelector(".time-bar-input").value = "";
+}
 // Prinet time to html
 function print(txt) {
   document.querySelector(".time-bar-time").innerHTML = txt;
+}
+
+function log() {
+  let logInput = document.querySelector(".time-bar-input").value;
+  let time = document.querySelector(".time-bar-time").textContent;
+  console.log(logInput);
+  console.log(time);
 }
