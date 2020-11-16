@@ -97,3 +97,8 @@ function toggle() {
     brand.src = "./img/toggl.png";
   }
 }
+
+// Log content
+let logCurrentDate = (document.querySelector(".log-current-date").innerHTML = moment().format(
+  "dd, D MMM"
+));

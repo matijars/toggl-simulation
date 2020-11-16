@@ -25,6 +25,7 @@
 
   --timer-mode-active: #422a4c;
 
+  --log-input-text-clr: rgb(44, 19, 56);
   --log-item-hover: rgb(248, 248, 249);
   --dollar-sign: rgb(196, 99, 186);
 }
@@ -383,7 +384,10 @@
   height: 50px;
   display: flex;
   align-items: center;
+  font-weight: 500;
+  font-size: 14px;
   padding-left: 20px;
+  color: var(--log-input-text-clr);
 }
 
 .log-input {
@@ -391,7 +395,14 @@
   outline: none;
   padding-left: 20px;
   width: 400px;
+  font-size: 14px;
+  color: var(--log-input-text-clr);
+  font-weight: 400;
   background-color: transparent;
+}
+
+.log-input::placeholder {
+  color: rgb(170, 170, 170);
 }
 /* Utilities */
 
