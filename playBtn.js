@@ -53,11 +53,39 @@ function start() {
 
 function reset() {
   clearInterval(timerInterval);
-  print("0:00:00");
   elapsedTime = 0;
-}
+  log();
 
+  print("0:00:00");
+  document.querySelector(".time-bar-input").value = "";
+}
 // Prinet time to html
 function print(txt) {
   document.querySelector(".time-bar-time").innerHTML = txt;
+}
+
+function log() {
+  let logInput = document.querySelector(".time-bar-input").value;
+  let time = document.querySelector(".time-bar-time").textContent;
+
+  let test = document.querySelector(".log-current-date");
+
+  test.insertAdjacentHTML(
+    "afterend",
+    `<div class="log-item">
+      <input
+        class="log-input"
+        type="text"
+        value="${logInput}"
+        placeholder="Add description"
+      />
+      <div class="log-right">
+        <i class="fas fa-tag log-action-icon"></i>
+        <i class="fas fa-dollar-sign"></i>
+        <span class="log-time">${time}</span>
+        <i class="fas fa-play log-action-icon"></i>
+        <i class="fas fa-ellipsis-v log-action-icon"></i>
+      </div>
+    </div>`
+  );
 }
