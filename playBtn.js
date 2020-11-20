@@ -84,7 +84,13 @@ function log() {
         <i class="fas fa-dollar-sign"></i>
         <span class="log-time">${time}</span>
         <i class="fas fa-play log-action-icon"></i>
-        <i class="fas fa-ellipsis-v log-action-icon"></i>
+        <i class="fas fa-ellipsis-v log-action-icon log-options-btn"></i>
+        <div class='log-options'>
+        <span>Duplicate</span>
+        <span>Set as non-billable</span>
+        <span>Go to project</span>
+        <span class="delete-log">Delete</span>
+        </div>
       </div>
     </div>`
   );

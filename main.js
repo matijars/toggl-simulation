@@ -86,7 +86,7 @@ workspace.addEventListener("click", () => {
 });
 
 // Responsive on window resise
-window.onresize = function () {
+window.onresize = () => {
   toggle();
 };
 
@@ -102,3 +102,54 @@ function toggle() {
 let logCurrentDate = (document.querySelector(".log-current-date").innerHTML = moment().format(
   "dd, D MMM"
 ));
+
+document.addEventListener("click", (e) => {
+  let logOption = e.target;
+  if (logOption.classList.contains("log-options-btn")) {
+    let logItems = document.querySelectorAll(".log-item");
+
+    logItems.forEach((item) => {
+      item.style.pointerEvents = "none";
+    });
+
+    logOption.classList.toggle("options-btn-active");
+    logOption.parentNode.parentNode.classList.toggle("log-item-active");
+    logOption.parentNode.parentNode.style.pointerEvents = "auto";
+
+    let icons = logOption.parentNode.children;
+    for (let icon of icons) {
+      icon.classList.toggle("log-action-icon-active");
+    }
+
+    logOption.parentNode.querySelector(".log-options").classList.toggle("log-options-open");
+  } else if (logOption.classList.contains("delete-log")) {
+    let logItems = document.querySelectorAll(".log-item");
+    logItems.forEach((item) => {
+      item.style.pointerEvents = "auto";
+    });
+    logOption.style.color = "red";
+    logOption.parentNode.parentNode.parentNode.remove();
+  } else {
+    let logItems = document.querySelectorAll(".log-item");
+    let logIcons = document.querySelectorAll(".log-action-icon");
+    let logOptions = document.querySelectorAll(".log-options");
+    let logOptionsBtns = document.querySelectorAll(".log-options-btn");
+
+    logItems.forEach((item) => {
+      item.classList.remove("log-item-active");
+      item.style.pointerEvents = "auto";
+    });
+
+    logIcons.forEach((icon) => {
+      icon.classList.remove("log-action-icon-active");
+    });
+
+    logOptions.forEach((option) => {
+      option.classList.remove("log-options-open");
+    });
+
+    logOptionsBtns.forEach((btn) => {
+      btn.classList.remove("options-btn-active");
+    });
+  }
+});
