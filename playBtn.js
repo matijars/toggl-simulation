@@ -58,6 +58,14 @@ function reset() {
 
   print("0:00:00");
   document.querySelector(".time-bar-input").value = "";
+
+  let bulkBtn = document.querySelector(".bulk-btn");
+
+  if (window.getComputedStyle(bulkBtn).display === "none") {
+    bulkBtn.style.display = "block";
+  }
+
+  updateTotalItems();
 }
 // Prinet time to html
 function print(txt) {
@@ -68,17 +76,22 @@ function log() {
   let logInput = document.querySelector(".time-bar-input").value;
   let time = document.querySelector(".time-bar-time").textContent;
 
-  let test = document.querySelector(".log-current-date");
+  let totalTimeHolder = document.querySelector(".total-time-holder");
 
-  test.insertAdjacentHTML(
+  totalTimeHolder.insertAdjacentHTML(
     "afterend",
     `<div class="log-item">
-      <input
-        class="log-input"
-        type="text"
-        value="${logInput}"
-        placeholder="Add description"
-      />
+      <div class="log-left">
+        <label class="check-input">
+         <input type="checkbox" class="checkbox item-checkbox"/>
+        </label>
+        <input
+          class="log-input"
+          type="text"
+          value="${logInput}"
+          placeholder="Add description"
+        />
+      </div>
       <div class="log-right">
         <i class="fas fa-tag log-action-icon"></i>
         <i class="fas fa-dollar-sign"></i>

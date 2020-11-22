@@ -129,6 +129,8 @@ document.addEventListener("click", (e) => {
     });
     logOption.style.color = "red";
     logOption.parentNode.parentNode.parentNode.remove();
+    updateTotalItems();
+    updateSelectedItems();
   } else {
     let logItems = document.querySelectorAll(".log-item");
     let logIcons = document.querySelectorAll(".log-action-icon");
@@ -153,3 +155,66 @@ document.addEventListener("click", (e) => {
     });
   }
 });
+
+// Bulk button
+let bulkBtn = document.querySelector(".bulk-btn");
+let bulkTotalHolder = document.querySelector(".bulk-total-holder");
+bulkBtn.addEventListener("click", () => {
+  bulkBtn.classList.toggle("bulk-btn-active");
+  bulkTotalHolder.classList.toggle("show");
+  let checkBtn = document.querySelectorAll(".check-input");
+  updateTotalItems();
+
+  checkBtn.forEach((btn) => {
+    btn.classList.toggle("check-input-active");
+  });
+});
+
+//Check all checkboxes
+let checkAll = document.querySelector("#checkAll");
+
+checkAll.addEventListener("change", () => {
+  let itemCheckbox = document.querySelectorAll(".item-checkbox");
+
+  if (checkAll.checked === true) {
+    itemCheckbox.forEach((checkbox) => {
+      checkbox.checked = true;
+    });
+  } else {
+    itemCheckbox.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+  }
+
+  updateSelectedItems();
+});
+
+//Show selected checkboxes number
+document.addEventListener("click", function (e) {
+  let checkbox = e.target;
+  if (checkbox.classList.contains("item-checkbox")) {
+    updateSelectedItems();
+  }
+});
+
+//Functions
+updateTotalItems = () => {
+  let totalItems = document.querySelectorAll(".log-item");
+  let bulkTotal = document.querySelector("#bulk-total");
+
+  bulkTotal.innerText = totalItems.length;
+};
+
+updateSelectedItems = () => {
+  let itemCheckbox = document.querySelectorAll(".item-checkbox");
+  let itemCheckboxChecked = document.querySelectorAll(".item-checkbox:checked");
+  let bulkSelected = document.querySelector("#bulk-selected");
+
+  bulkSelected.innerText = itemCheckboxChecked.length;
+
+  if (itemCheckboxChecked.length === itemCheckbox.length) {
+    checkAll.checked = true;
+  } else if (itemCheckboxChecked.length === 0) {
+    checkAll.checked = false;
+  }
+};
