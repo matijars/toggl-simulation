@@ -337,12 +337,48 @@
   flex-direction: column;
 }
 
+.total-time-holder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.total-time-holder-inner {
+  display: flex;
+  align-items: center;
+}
+
+.total-time-holder .bulk-btn {
+  display: none;
+  color: var(--time-bar-clr);
+  box-shadow: 0 0 0 1px var(--time-bar-clr);
+  border-radius: 8px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.bulk-total-holder {
+  display: none;
+  margin-left: 15px;
+}
+
+.total-time-holder .bulk-btn:hover {
+  color: var(--timer-mode-active);
+}
+
+.bulk-btn-active {
+  color: var(--play-btn) !important;
+  box-shadow: none !important;
+  background-color: var(--light-pink);
+}
+
 .log-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  padding-right: 10px;
+  padding: 0px 10px 0px 20px;
   box-shadow: rgb(232, 232, 232) 0px -1px 0px 0px inset;
 }
 
@@ -352,6 +388,11 @@
 
 .log-item-active {
   background-color: var(--log-item-hover);
+}
+
+.log-left {
+  display: flex;
+  align-items: center;
 }
 
 .log-right {
@@ -396,18 +437,18 @@
 
 .log-current-date {
   height: 50px;
+  width: 70px;
   display: flex;
   align-items: center;
   font-weight: 500;
   font-size: 14px;
-  padding-left: 20px;
   color: var(--log-input-text-clr);
 }
 
-.log-input {
+.log-input,
+.bulk-total-holder {
   border: none;
   outline: none;
-  padding-left: 20px;
   width: 400px;
   font-size: 14px;
   color: var(--log-input-text-clr);
@@ -484,6 +525,14 @@
   color: var(--timer-mode-active);
 }
 
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
 /* Buttons */
 
 #show-more-btn {
@@ -492,6 +541,26 @@
 
 #show-more-btn:hover {
   opacity: 1;
+}
+
+.check-input {
+  display: none;
+}
+
+.check-input-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 0px 20px 0px -20px;
+}
+
+.checkbox {
+  filter: hue-rotate(60deg);
+  transform: scale(1.02);
+  cursor: pointer;
 }
 
 /* Responsive */
