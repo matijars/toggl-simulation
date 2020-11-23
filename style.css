@@ -393,6 +393,7 @@
 .log-left {
   display: flex;
   align-items: center;
+  flex: 20%;
 }
 
 .log-right {
@@ -437,7 +438,7 @@
 
 .log-current-date {
   height: 50px;
-  width: 70px;
+  width: 75px;
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -445,15 +446,20 @@
   color: var(--log-input-text-clr);
 }
 
-.log-input,
-.bulk-total-holder {
+.log-input {
   border: none;
   outline: none;
-  width: 400px;
   font-size: 14px;
   color: var(--log-input-text-clr);
   font-weight: 400;
   background-color: transparent;
+  width: 100%;
+}
+
+.bulk-total-holder {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--log-input-text-clr);
 }
 
 .log-input::placeholder {
@@ -551,10 +557,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
   height: 50px;
   cursor: pointer;
-  margin: 0px 20px 0px -20px;
+  margin: 0px 20px 0px 0px;
 }
 
 .checkbox {
@@ -655,6 +660,5 @@
   }
 
   .time-bar-wrapper {
-    padding-right: 70px;
   }
 }
