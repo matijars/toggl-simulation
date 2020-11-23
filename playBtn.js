@@ -60,9 +60,14 @@ function reset() {
   document.querySelector(".time-bar-input").value = "";
 
   let bulkBtn = document.querySelector(".bulk-btn");
+  let checkBtn = document.querySelectorAll(".check-input");
 
   if (window.getComputedStyle(bulkBtn).display === "none") {
     bulkBtn.style.display = "block";
+  } else if (bulkBtn.classList.contains("bulk-btn-active")) {
+    checkBtn.forEach((btn) => {
+      btn.classList.add("check-input-active");
+    });
   }
 
   updateTotalItems();
