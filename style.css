@@ -55,7 +55,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--menu-bg-clr);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -242,6 +242,7 @@
   top: 0;
   box-shadow: rgba(0, 0, 0, 0.13) 0px 2px 6px 0px;
   width: 100%;
+  z-index: 10;
   padding-right: 200px;
   background-color: #fff;
   transition: 0.2s ease;
@@ -462,6 +463,10 @@
   color: var(--log-input-text-clr);
 }
 
+.bulk-edit {
+  margin: 0px 15px;
+}
+
 .log-input::placeholder {
   color: rgb(170, 170, 170);
 }
@@ -537,6 +542,11 @@
 
 .hide {
   display: none;
+}
+
+.bulk-delete-active {
+  color: red;
+  cursor: pointer;
 }
 
 /* Buttons */

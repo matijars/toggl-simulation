@@ -1,3 +1,4 @@
+// Get all DOM Elements
 let sideMenu = document.querySelector(".side-menu");
 
 let showMoreSection = document.querySelector(".show-more-section");
@@ -12,6 +13,14 @@ let workspace = document.querySelector(".workspace");
 let workspaceArrow = document.querySelector(".workspace .fa-chevron-down");
 
 const menuLinks = "./menu-links.json";
+
+// Bulk
+let bulkBtn = document.querySelector(".bulk-btn");
+let bulkTotalHolder = document.querySelector(".bulk-total-holder");
+let bulkCheckAll = document.querySelector("#bulkCheckAll");
+let bulkSelected = document.querySelector("#bulk-selected");
+let bulkTotal = document.querySelector("#bulk-total");
+let bulkDelete = document.querySelector(".bulk-delete");
 
 // Load menu items from json
 fetch(menuLinks)
@@ -98,11 +107,12 @@ function toggle() {
   }
 }
 
-// Log content
+// Current date
 let logCurrentDate = (document.querySelector(".log-current-date").innerHTML = moment().format(
   "dd, D MMM"
 ));
 
+// Log options
 document.addEventListener("click", (e) => {
   let logOption = e.target;
   if (logOption.classList.contains("log-options-btn")) {
@@ -157,8 +167,6 @@ document.addEventListener("click", (e) => {
 });
 
 // Bulk button
-let bulkBtn = document.querySelector(".bulk-btn");
-let bulkTotalHolder = document.querySelector(".bulk-total-holder");
 bulkBtn.addEventListener("click", () => {
   bulkBtn.classList.toggle("bulk-btn-active");
   bulkTotalHolder.classList.toggle("show");
@@ -171,18 +179,18 @@ bulkBtn.addEventListener("click", () => {
 });
 
 //Check all checkboxes
-let checkAll = document.querySelector("#checkAll");
-
-checkAll.addEventListener("change", () => {
+bulkCheckAll.addEventListener("change", () => {
   let itemCheckbox = document.querySelectorAll(".item-checkbox");
 
-  if (checkAll.checked === true) {
+  if (bulkCheckAll.checked === true) {
     itemCheckbox.forEach((checkbox) => {
       checkbox.checked = true;
+      bulkDelete.classList.add("bulk-delete-active");
     });
   } else {
     itemCheckbox.forEach((checkbox) => {
       checkbox.checked = false;
+      bulkDelete.classList.add("bulk-delete-active");
     });
   }
 
@@ -191,30 +199,42 @@ checkAll.addEventListener("change", () => {
 
 //Show selected checkboxes number
 document.addEventListener("click", function (e) {
-  let checkbox = e.target;
-  if (checkbox.classList.contains("item-checkbox")) {
+  let itemCheckbox = e.target;
+  if (itemCheckbox.classList.contains("item-checkbox")) {
+    bulkDelete.classList.add("bulk-delete-active");
     updateSelectedItems();
   }
+});
+
+// Bulk Delete Items
+bulkDelete.addEventListener("click", function (e) {
+  let itemCheckboxChecked = document.querySelectorAll(".item-checkbox:checked");
+  if (itemCheckboxChecked.length > 0) {
+    itemCheckboxChecked.forEach((checkbox) => {
+      checkbox.closest(".log-item").remove();
+    });
+  }
+
+  updateSelectedItems();
+  updateTotalItems();
 });
 
 //Functions
 updateTotalItems = () => {
   let totalItems = document.querySelectorAll(".log-item");
-  let bulkTotal = document.querySelector("#bulk-total");
-
   bulkTotal.innerText = totalItems.length;
 };
 
 updateSelectedItems = () => {
   let itemCheckbox = document.querySelectorAll(".item-checkbox");
   let itemCheckboxChecked = document.querySelectorAll(".item-checkbox:checked");
-  let bulkSelected = document.querySelector("#bulk-selected");
 
   bulkSelected.innerText = itemCheckboxChecked.length;
 
   if (itemCheckboxChecked.length === itemCheckbox.length) {
-    checkAll.checked = true;
+    bulkCheckAll.checked = true;
   } else if (itemCheckboxChecked.length === 0) {
-    checkAll.checked = false;
+    bulkCheckAll.checked = false;
+    bulkDelete.classList.remove("bulk-delete-active");
   }
 };
