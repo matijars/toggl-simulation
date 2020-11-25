@@ -1,20 +1,21 @@
-// Get all DOM Elements
+// Side Menu DOM Elements
+let brand = document.querySelector("#brand");
 let sideMenu = document.querySelector(".side-menu");
+let menuItems = document.querySelectorAll(".side-menu-item");
 
+// Show More Menu DOM Elements
 let showMoreSection = document.querySelector(".show-more-section");
 let showMoreBtn = document.querySelector("#show-more-btn");
 let showMoreBtnArrow = document.querySelector(".fa-chevron-down");
 
-let brand = document.querySelector("#brand");
-
-let menuItems = document.querySelectorAll(".side-menu-item");
-
+// Workspace DOM Elements
 let workspace = document.querySelector(".workspace");
 let workspaceArrow = document.querySelector(".workspace .fa-chevron-down");
 
+// Menu Links JSON file
 const menuLinks = "./menu-links.json";
 
-// Bulk
+// Bulk DOM Elements
 let bulkBtn = document.querySelector(".bulk-btn");
 let bulkTotalHolder = document.querySelector(".bulk-total-holder");
 let bulkCheckAll = document.querySelector("#bulkCheckAll");
@@ -115,9 +116,13 @@ let logCurrentDate = (document.querySelector(".log-current-date").innerHTML = mo
 // Log options
 document.addEventListener("click", (e) => {
   let logOption = e.target;
-  if (logOption.classList.contains("log-options-btn")) {
-    let logItems = document.querySelectorAll(".log-item");
+  let logIcons = document.querySelectorAll(".log-action-icon");
+  let logItems = document.querySelectorAll(".log-item");
+  let logOptions = document.querySelectorAll(".log-options");
+  let logOptionsBtns = document.querySelectorAll(".log-options-btn");
+  let icons = logOption.parentNode.children;
 
+  if (logOption.classList.contains("log-options-btn")) {
     logItems.forEach((item) => {
       item.style.pointerEvents = "none";
     });
@@ -126,14 +131,12 @@ document.addEventListener("click", (e) => {
     logOption.parentNode.parentNode.classList.toggle("log-item-active");
     logOption.parentNode.parentNode.style.pointerEvents = "auto";
 
-    let icons = logOption.parentNode.children;
     for (let icon of icons) {
       icon.classList.toggle("log-action-icon-active");
     }
 
     logOption.parentNode.querySelector(".log-options").classList.toggle("log-options-open");
   } else if (logOption.classList.contains("delete-log")) {
-    let logItems = document.querySelectorAll(".log-item");
     logItems.forEach((item) => {
       item.style.pointerEvents = "auto";
     });
@@ -141,12 +144,11 @@ document.addEventListener("click", (e) => {
     logOption.parentNode.parentNode.parentNode.remove();
     updateTotalItems();
     updateSelectedItems();
-  } else {
-    let logItems = document.querySelectorAll(".log-item");
-    let logIcons = document.querySelectorAll(".log-action-icon");
-    let logOptions = document.querySelectorAll(".log-options");
-    let logOptionsBtns = document.querySelectorAll(".log-options-btn");
 
+    if (logItems.length === 1) {
+      hideOrResetClasses();
+    }
+  } else {
     logItems.forEach((item) => {
       item.classList.remove("log-item-active");
       item.style.pointerEvents = "auto";
@@ -193,7 +195,6 @@ bulkCheckAll.addEventListener("change", () => {
       bulkDelete.classList.add("bulk-delete-active");
     });
   }
-
   updateSelectedItems();
 });
 
@@ -209,14 +210,16 @@ document.addEventListener("click", function (e) {
 // Bulk Delete Items
 bulkDelete.addEventListener("click", function (e) {
   let itemCheckboxChecked = document.querySelectorAll(".item-checkbox:checked");
-  if (itemCheckboxChecked.length > 0) {
-    itemCheckboxChecked.forEach((checkbox) => {
-      checkbox.closest(".log-item").remove();
-    });
-  }
+  itemCheckboxChecked.forEach((checkbox) => {
+    checkbox.closest(".log-item").remove();
+  });
 
   updateSelectedItems();
   updateTotalItems();
+
+  if (bulkTotal.innerHTML === "0") {
+    hideOrResetClasses();
+  }
 });
 
 //Functions
@@ -237,4 +240,13 @@ updateSelectedItems = () => {
     bulkCheckAll.checked = false;
     bulkDelete.classList.remove("bulk-delete-active");
   }
+};
+
+hideOrResetClasses = () => {
+  bulkTotalHolder.classList.remove("show");
+  bulkCheckAll.parentNode.classList.remove("check-input-active");
+  bulkCheckAll.checked = false;
+  bulkDelete.classList.remove("bulk-delete-active");
+  bulkBtn.classList.remove("bulk-btn-active");
+  bulkBtn.style.display = "none";
 };
