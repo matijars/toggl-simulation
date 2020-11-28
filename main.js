@@ -1,27 +1,36 @@
-// Side Menu DOM Elements
+// DOM Elements
+
+// Side Menu
 let brand = document.querySelector("#brand");
 let sideMenu = document.querySelector(".side-menu");
 let menuItems = document.querySelectorAll(".side-menu-item");
 
-// Show More Menu DOM Elements
+// Show More Menu
 let showMoreSection = document.querySelector(".show-more-section");
 let showMoreBtn = document.querySelector("#show-more-btn");
 let showMoreBtnArrow = document.querySelector(".fa-chevron-down");
 
-// Workspace DOM Elements
+// Workspace
 let workspace = document.querySelector(".workspace");
 let workspaceArrow = document.querySelector(".workspace .fa-chevron-down");
 
 // Menu Links JSON file
 const menuLinks = "./menu-links.json";
 
-// Bulk DOM Elements
+// Timer Page
+const timeBarWrapper = document.querySelector(".time-bar-wrapper");
+const logWrapper = document.querySelector(".log-wrapper");
+
+// Bulk
 let bulkBtn = document.querySelector(".bulk-btn");
 let bulkTotalHolder = document.querySelector(".bulk-total-holder");
 let bulkCheckAll = document.querySelector("#bulkCheckAll");
 let bulkSelected = document.querySelector("#bulk-selected");
 let bulkTotal = document.querySelector("#bulk-total");
 let bulkDelete = document.querySelector(".bulk-delete");
+
+// Team Page
+const teamBarWrapper = document.querySelector(".team-bar-wrapper");
 
 // Load menu items from json
 fetch(menuLinks)
@@ -37,7 +46,7 @@ fetch(menuLinks)
     }).join("");
 
     const Manage = data[1].Manage.map((item) => {
-      return `<div class="side-menu-item">
+      return `<div class="side-menu-item" id="${item.id}">
                 <div class="icon">${item.icon}</div>
                 <span>${item.span}</span>
               </div>`;
@@ -219,6 +228,19 @@ bulkDelete.addEventListener("click", function (e) {
 
   if (bulkTotal.innerHTML === "0") {
     hideOrResetClasses();
+  }
+});
+
+// Team Section
+document.addEventListener("click", (e) => {
+  if (e.target.matches("#Team")) {
+    timeBarWrapper.classList.add("hide");
+    logWrapper.classList.add("hide");
+    teamBarWrapper.classList.remove("hide");
+  } else if (e.target.matches("#Timer")) {
+    timeBarWrapper.classList.remove("hide");
+    logWrapper.classList.remove("hide");
+    teamBarWrapper.classList.add("hide");
   }
 });
 
