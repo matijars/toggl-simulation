@@ -31,6 +31,9 @@ let bulkDelete = document.querySelector(".bulk-delete");
 
 // Team Page
 const teamBarWrapper = document.querySelector(".team-bar-wrapper");
+const teamBarFilter = document.querySelector(".team-bar-filter");
+const teamTableContainer = document.querySelector(".team-table-container");
+const teamTable = "./team.json";
 
 // Load menu items from json
 fetch(menuLinks)
@@ -237,10 +240,16 @@ document.addEventListener("click", (e) => {
     timeBarWrapper.classList.add("hide");
     logWrapper.classList.add("hide");
     teamBarWrapper.classList.remove("hide");
+    teamBarFilter.classList.remove("hide");
+    teamTableContainer.classList.remove("hide");
+
+    fetchTeamTable();
   } else if (e.target.matches("#Timer")) {
     timeBarWrapper.classList.remove("hide");
     logWrapper.classList.remove("hide");
     teamBarWrapper.classList.add("hide");
+    teamBarFilter.classList.add("hide");
+    teamTableContainer.classList.add("hide");
   }
 });
 
@@ -271,4 +280,32 @@ hideOrResetClasses = () => {
   bulkDelete.classList.remove("bulk-delete-active");
   bulkBtn.classList.remove("bulk-btn-active");
   bulkBtn.style.display = "none";
+};
+
+fetchTeamTable = () => {
+  fetch(teamTable)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      const TableItem = data.results
+        .map((item) => {
+          return `<tr class="tr-item">
+                    <td>
+                      <div class="td-item">
+                        <img class="table-profile-img" src="${item.picture.thumbnail}" alt="" />
+                        <span style="margin-right: 5px">${item.name.first}</span>
+                        <span>${item.name.last}</span>
+                      </div>
+                    </td>
+                    <td>${item.email}</td>
+                    <td>${item.location.country}</td>
+                    <td>${item.location.city}</td>
+                    <td>${item.phone}</td>
+                    <td>${item.login.username}</td>
+                  </tr>`;
+        })
+        .join("");
+      document.querySelector(".table-header").insertAdjacentHTML("afterend", TableItem);
+    });
 };
