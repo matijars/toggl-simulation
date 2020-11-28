@@ -11,6 +11,37 @@ a {
   text-decoration: none;
 }
 
+:root {
+  --menu-link-clr: rgb(253, 229, 220);
+  --menu-link-hover-clr: #fff;
+  --menu-link-active-bg-clr: rgb(66, 42, 76);
+  --menu-section-clr: rgb(130, 113, 136);
+
+  --menu-bg-clr: rgb(44, 19, 56);
+
+  --time-bar-clr: rgb(149, 137, 155);
+  --time-bar-clr-hover: rgb(111, 98, 117);
+
+  --light-pink: #fbe5f7;
+
+  --play-btn: #dd6fd1;
+  --play-btn-hover: #d346c4;
+
+  --timer-mode-active: #422a4c;
+
+  --log-input-text-clr: rgb(44, 19, 56);
+  --log-item-hover: rgb(248, 248, 249);
+  --dollar-sign: rgb(196, 99, 186);
+
+  --page-bar-link-clr: rgb(149, 137, 155);
+  --page-bar-link-hover: rgb(44, 19, 56);
+  --page-bar-filter-clr: rgb(123, 123, 123);
+  --page-bar-filter-link-hover: rgba(235, 231, 235, 0.5);
+
+  --item-border-line-box-shadow: rgba(235, 231, 235, 0.5) 0px -1px 0px 0px inset;
+  --items-border-line: 1px solid rgb(232, 232, 232);
+}
+
 /* Pages */
 .page-bar-left {
   display: flex;
@@ -25,10 +56,14 @@ a {
 }
 
 .page-bar-left .page-bar-links a {
-  color: var(--time-bar-clr);
+  color: var(--page-bar-link-clr);
   font-size: 14px;
   padding: 0px 10px;
   line-height: 20px;
+}
+
+.page-bar-left .page-bar-links a:hover {
+  color: var(--page-bar-link-hover);
 }
 
 .page-bar-right .fa-paper-plane {
@@ -56,27 +91,44 @@ a {
   box-shadow: none;
 }
 
-:root {
-  --menu-link-clr: rgb(253, 229, 220);
-  --menu-link-hover-clr: #fff;
-  --menu-link-active-bg-clr: rgb(66, 42, 76);
-  --menu-section-clr: rgb(130, 113, 136);
+.page-bar-filter {
+  position: absolute;
+  top: 66px;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 2px 6px 0px;
+  border-top: var(--items-border-line);
+  width: 100%;
+  height: 50px;
+  z-index: 10;
+  padding-left: 20px;
+  background-color: #fff;
+  transition: 0.2s ease;
+  font-size: 14px;
+  color: var(--page-bar-link-clr);
+}
 
-  --menu-bg-clr: rgb(44, 19, 56);
+.page-bar-filter span {
+  margin-right: 8px;
+}
 
-  --time-bar-clr: rgb(149, 137, 155);
-  --time-bar-clr-hover: rgb(111, 98, 117);
+.page-bar-filter a {
+  display: inline-block;
+  color: var(--page-bar-link-clr);
+  height: 30px;
+  padding: 6px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 8px;
+}
 
-  --light-pink: #fbe5f7;
+.page-bar-filter a:hover {
+  color: var(--page-bar-link-hover);
+  background-color: var(--page-bar-filter-link-hover);
+}
 
-  --play-btn: #dd6fd1;
-  --play-btn-hover: #d346c4;
-
-  --timer-mode-active: #422a4c;
-
-  --log-input-text-clr: rgb(44, 19, 56);
-  --log-item-hover: rgb(248, 248, 249);
-  --dollar-sign: rgb(196, 99, 186);
+.page-bar-filter .fas {
+  margin-right: 5px;
 }
 
 /* Menu */
@@ -286,8 +338,7 @@ a {
 }
 
 /* Time bar */
-.time-bar-wrapper,
-.team-bar-wrapper {
+.time-bar-wrapper {
   position: fixed;
   display: flex;
   align-items: center;
@@ -567,6 +618,79 @@ a {
 
 /* Team Page */
 
+.team-bar-wrapper {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 2px 6px 0px;
+  width: 100%;
+  height: 66px;
+  z-index: 10;
+  padding: 0px 20px;
+  background-color: #fff;
+  transition: 0.2s ease;
+}
+
+.team-table-container {
+  margin-top: 40px;
+  background-color: #fff;
+}
+
+.team-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.team-table td {
+  padding-left: 20px;
+}
+
+.team-table .td-item {
+  display: flex;
+  align-items: center;
+}
+
+.team-table th {
+  padding-left: 20px;
+  text-align: left;
+  height: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  vertical-align: middle;
+  color: var(--page-bar-link-clr);
+  cursor: default;
+  text-transform: uppercase;
+  box-shadow: var(--item-border-line-box-shadow);
+}
+
+.team-table tr {
+  font-size: 14px;
+  color: var(--log-input-text-clr);
+  box-shadow: var(--item-border-line-box-shadow);
+  height: 50px;
+}
+
+.team-table tr:hover {
+  background-color: var(--log-item-hover);
+}
+
+.team-table tr:first-child {
+  border-top: none;
+}
+
+.team-table tr:first-child:hover {
+  background-color: #fff;
+}
+
+.table-profile-img {
+  margin-right: 10px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
+
 /* Utilities */
 
 .active {
@@ -726,8 +850,7 @@ a {
     margin-left: 52px;
   }
 
-  .time-bar-wrapper,
-  .team-bar-wrapper {
+  .time-bar-wrapper {
     padding-right: 70px;
   }
 }
